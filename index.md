@@ -1,9 +1,9 @@
 
 # Introduction
-This script simply outputs to contents of the VentOS meta database.
+This is a simple output of the contents of the draft VentOS meta database.
 
-Using YAML files committed git repositories the project is able to control
-changes.
+Using YAML files committed git repositories the VentOS project is able to
+control changes.
 
 In the future this script will contain various transformation scripts.
 
