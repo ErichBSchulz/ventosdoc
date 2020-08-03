@@ -1,9 +1,15 @@
-This script does nothing useful, but acts as a placeholder for future transformation scripts.
-        
 
-## State (45)
+# Introduction
+This script simply outputs to contents of the VentOS meta database.
+
+Using YAML files committed git repositories the project is able to control
+changes.
+
+In the future this script will contain various transformation scripts.
+
+
+# State (45 items)
 LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_HEIGHT | PATIENT_GENDER | IDEAL_BODY_WEIGHT | TV | SET_PI | INSPIRATION_FLOW_TRIGGER | INSPIRATION_P_TRIGGER | EXPIRATORY_TERMINATION_TRIGGER | INSPIRATORY_TIME | MIN_RR | SET_PEEP | SET_FIO2 | VENTILATION_MODE | BATTERY | MAINS | POWER | OXYGEN_LINE | AIR_LINE | TEMPERATURE | P | RR | P1 | P2 | FI | FE | FLOW | FO2 | PCO2 | INSPIRING | PI | PEAK_PI | PEEP | TVI | TVE | MV | FIO2 | FEO2 | ETCO2 | ICO2 | LAST_LOG_TIME | ALARM_SUSPENDED_TIME
-notes | status | sot | units | enum | min | max | default
 |                                | notes                                                                                             | status   | sot       | units       | enum                          |    min |             max | default   |
 |:-------------------------------|:--------------------------------------------------------------------------------------------------|:---------|:----------|:------------|:------------------------------|-------:|----------------:|:----------|
 | LOG_INTERVAL                   | Desired logging interval                                                                          | draft    | config    | miliseconds | nan                           |    1   |     3.6e+06     | 300000    |
@@ -52,9 +58,8 @@ notes | status | sot | units | enum | min | max | default
 | LAST_LOG_TIME                  | last time the system wrote to the log                                                             | draft    | timestamp | time        | nan                           |  nan   |   nan           | nan       |
 | ALARM_SUSPENDED_TIME           | Alarm suspended time                                                                              | draft    | timestamp | time        | nan                           |  nan   |   nan           | nan       |
 
-## Alarm (26)
+# Alarm (26 items)
 BATTERY_LOW | MAINS_LOW | POWER_LOW | OXYGEN_LINE_LOW | AIR_LINE_LOW | PEAK_PI_HI | PI_HI | PI_LOW | PEEP_LOW | TV_LOW | TV_HI | P_DIV | FLOW_DIV | FO2_DIV | MV_HI | MV_LOW | ETCO2_HI | ETCO2_LOW | FIO2_HI | FIO2_LOW | RR_HI | RR_LOW | TV_DIFF | PI_DIFF | RR_DIFF | TEMPERATURE_HI
-notes | status | source
 |                 | notes                                                                                                                      | status   | source                   |
 |:----------------|:---------------------------------------------------------------------------------------------------------------------------|:---------|:-------------------------|
 | BATTERY_LOW     | Battery status info/warning/alarm/critical (?? % or volts)                                                                 | core     | ['RMVS 1.a']             |
@@ -84,9 +89,8 @@ notes | status | source
 | RR_DIFF         | RR difference from setting (BPM)                                                                                           | proposed | ['VentOS']               |
 | TEMPERATURE_HI  | overheating (degrees c)                                                                                                    | proposed | ['VentOS']               |
 
-## Alarm Level (5)
+# Alarm Level (5 items)
 NOTICE | ALERT | WARNING | ALARM | CRITICAL
-notes | synonyms | status
 |          | notes                             | synonyms      | status   |
 |:---------|:----------------------------------|:--------------|:---------|
 | NOTICE   | eg apnoea 10 seconds, battery 10% | ['INFO']      | proposed |
@@ -95,9 +99,8 @@ notes | synonyms | status
 | ALARM    |                                   | ['HIGH']      | proposed |
 | CRITICAL |                                   | ['EMERGENCY'] | proposed |
 
-## Abbreviation (13)
+# Abbreviation (13 items)
 BIPAP | CPAP | CMV | ET | Fi | Fi02 | IPPV | MV | PCV | PEEP | PRVC | TV | VCV
-full | source | definition
 |       | full                                       | source   | definition                                                                                                                                                                                                                |
 |:------|:-------------------------------------------|:---------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BIPAP | bilevel positive airway pressure           | RMVS     | A non-invasive ventilation mode that provides different levels of pressure when the patient inhales and exhales.                                                                                                          |
