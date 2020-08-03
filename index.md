@@ -63,34 +63,34 @@ LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_
 
 # <a name="alarm"></a>Alarm (26 items)
 BATTERY_LOW | MAINS_LOW | POWER_LOW | OXYGEN_LINE_LOW | AIR_LINE_LOW | PEAK_PI_HI | PI_HI | PI_LOW | PEEP_LOW | TV_LOW | TV_HI | P_DIV | FLOW_DIV | FO2_DIV | MV_HI | MV_LOW | ETCO2_HI | ETCO2_LOW | FIO2_HI | FIO2_LOW | RR_HI | RR_LOW | TV_DIFF | PI_DIFF | RR_DIFF | TEMPERATURE_HI
-|                 | notes                                                                                                                      | status   | source                   | units     |
-|:----------------|:---------------------------------------------------------------------------------------------------------------------------|:---------|:-------------------------|:----------|
-| BATTERY_LOW     | Battery status info/warning/alarm/critical (?? % or volts)                                                                 | core     | ['RMVS 1.a']             | percent   |
-| MAINS_LOW       | Mains power failure (seconds delay)                                                                                        | proposed | ['RMVS 1.a']             | Volts     |
-| POWER_LOW       | Complete loss of power imminent, as both mains and battery unavailable. This is emergency if in mandatory ventilaton mode. | proposed | ['RMVS 1.a', 'RMVS 1.b'] | percent   |
-| OXYGEN_LINE_LOW | Oxygen supply failure (mBar - eg 3000)                                                                                     | core     | ['RMVS 1.a']             | mBar      |
-| AIR_LINE_LOW    | Air supply failure (mBar - eg 3000)                                                                                        | core     | ['RMVS 1.a']             | mBar      |
-| PEAK_PI_HI      | Instantaneous over-pressure (cmH2O) - a single reading triggers alarm                                                      | core     | ['RMVS 1.c']             | cmH2O     |
-| PI_HI           | Sustained over-pressure (seconds and cmH2O - eg over 30cmH2O for 5 seconds) - ie a PEEP high alarm                         | proposed | ['RMVS 1.c']             | cmH2O     |
-| PI_LOW          | Potential disconnect                                                                                                       | core     | ['RMVS 1.d']             | cmH2O     |
-| PEEP_LOW        | Potential disconnect                                                                                                       | core     | ['RMVS 1.d']             | cmH2O     |
-| TV_LOW          | Tidal volume low                                                                                                           | core     | ['RMVS 1.d']             | ml        |
-| TV_HI           | Tidal volume high                                                                                                          | core     | ['RMVS 1.d']             | ml        |
-| P_DIV           | pressure sensor divergence (fault or miscalibration) cmH2O                                                                 | proposed | ['VentOS']               | cmH2O     |
-| FLOW_DIV        | flow sensor divergence (fault or miscalibration, ) ml/minute                                                               | proposed | ['VentOS']               | ml/minute |
-| FO2_DIV         | oxygen sensor divergence (fault or miscalibration), absolute %                                                             | proposed | ['VentOS']               | percent   |
-| MV_HI           | minute volume high (ml)                                                                                                    | proposed | ['VentOS']               | ml        |
-| MV_LOW          | minute volume low (ml)                                                                                                     | proposed | ['VentOS']               | ml        |
-| ETCO2_HI        | etCO2 high (mmHg)                                                                                                          | proposed | ['VentOS']               | mmHg      |
-| ETCO2_LOW       | etCO2 low (mmHg)                                                                                                           | proposed | ['VentOS']               | mmHg      |
-| FIO2_HI         | FiO2 low (%)                                                                                                               | proposed | ['VentOS']               | percent   |
-| FIO2_LOW        | FiO2 low (%)                                                                                                               | proposed | ['VentOS']               | percent   |
-| RR_HI           | respiratory rate high (BPM)                                                                                                | proposed | ['VentOS']               | BPM       |
-| RR_LOW          | respiratory rate low (BPM) (apnoea) (seconds) (unsigned int)                                                               | proposed | ['VentOS']               | BPM       |
-| TV_DIFF         | tidal volume difference from setting (VCV/PRVC)                                                                            | proposed | ['VentOS']               | ml        |
-| PI_DIFF         | Pi different from setting (PCV/PSV)                                                                                        | proposed | ['VentOS']               | cmH2O     |
-| RR_DIFF         | RR difference from setting (BPM)                                                                                           | proposed | ['VentOS']               | BPM       |
-| TEMPERATURE_HI  | overheating (degrees c)                                                                                                    | proposed | ['VentOS']               | Celsius   |
+|                 | notes                                                                                                                      | status   | source                   |    min |   max |   default | units     |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------|:---------|:-------------------------|-------:|------:|----------:|:----------|
+| BATTERY_LOW     | Battery status info/warning/alarm/critical                                                                                 | core     | ['RMVS 1.a']             |   10   |    90 |        40 | percent   |
+| MAINS_LOW       | Mains power failure (seconds delay)                                                                                        | proposed | ['RMVS 1.a']             |   80   |    99 |        90 | Volts     |
+| POWER_LOW       | Complete loss of power imminent, as both mains and battery unavailable. This is emergency if in mandatory ventilaton mode. | proposed | ['RMVS 1.a', 'RMVS 1.b'] |   10   |    90 |        40 | percent   |
+| OXYGEN_LINE_LOW | Oxygen supply failure (eg 3000)                                                                                            | core     | ['RMVS 1.a']             |  500   |  4000 |      3500 | mBar      |
+| AIR_LINE_LOW    | Air supply failure (eg 3000)                                                                                               | core     | ['RMVS 1.a']             |  500   |  4000 |      3500 | mBar      |
+| PEAK_PI_HI      | Instantaneous over-pressure - a single reading triggers alarm                                                              | core     | ['RMVS 1.c']             |   20   |    60 |        40 | cmH2O     |
+| PI_HI           | Sustained over-pressure (seconds and cmH2O - eg over 30cmH2O for 5 seconds) - ie a PEEP high alarm                         | proposed | ['RMVS 1.c']             |   20   |    60 |        35 | cmH2O     |
+| PI_LOW          | Potential disconnect                                                                                                       | core     | ['RMVS 1.d']             |    8   |    35 |        14 | cmH2O     |
+| PEEP_LOW        | Potential disconnect                                                                                                       | core     | ['RMVS 1.d']             |    0   |    20 |         2 | cmH2O     |
+| TV_LOW          | Tidal volume low ilw                                                                                                       | core     | ['RMVS 1.d']             |  100   |   500 |       300 | ml        |
+| TV_HI           | Tidal volume high ilw                                                                                                      | core     | ['RMVS 1.d']             |  400   |  2000 |       800 | ml        |
+| P_DIV           | Pressure sensor divergence (fault or miscalibration). This value is quite dependant on smoothing.                          | proposed | ['VentOS']               |    0.1 |    20 |         2 | cmH2O     |
+| FLOW_DIV        | Flow sensor divergence (fault, miscalibration, or lead). Dependant on the time this is average overs. ilw                  | proposed | ['VentOS']               |  100   |  2000 |        10 | ml/minute |
+| FO2_DIV         | oxygen sensor divergence (fault or miscalibration)                                                                         | proposed | ['VentOS']               |    1   |    20 |        10 | percent   |
+| MV_HI           | Minute volume high. Ideally this is interpreted via ideal weight.                                                          | proposed | ['VentOS']               | 1000   | 20000 |     10000 | ml        |
+| MV_LOW          | Minute volume low. ilw                                                                                                     | proposed | ['VentOS']               |  400   | 20000 |      2000 | ml        |
+| ETCO2_HI        | etCO2 high                                                                                                                 | proposed | ['VentOS']               |   25   |    80 |        50 | mmHg      |
+| ETCO2_LOW       | etCO2 low                                                                                                                  | proposed | ['VentOS']               |   20   |    60 |        30 | mmHg      |
+| FIO2_HI         | FiO2 low. Ideally this time sensitive, with high FiO2 tolerated briefly.                                                   | proposed | ['VentOS']               |   21   |   100 |        60 | percent   |
+| FIO2_LOW        | FiO2 low                                                                                                                   | proposed | ['VentOS']               |   21   |    99 |        25 | percent   |
+| RR_HI           | Respiratory rate high. Younger patients may require a higher rate.                                                         | proposed | ['VentOS']               |    8   |    80 |        25 | BPM       |
+| RR_LOW          | Respiratory rate low (apnoea) (seconds)                                                                                    | proposed | ['VentOS']               |    6   |    40 |         8 | BPM       |
+| TV_DIFF         | Tidal volume difference from setting (VCV/PRVC)                                                                            | proposed | ['VentOS']               |   10   |   400 |       100 | ml        |
+| PI_DIFF         | Pi different from setting (PCV/PSV), ie machine did not achieve goal.                                                      | proposed | ['VentOS']               |    1   |    30 |         5 | cmH2O     |
+| RR_DIFF         | RR difference from setting                                                                                                 | proposed | ['VentOS']               |    1   |    10 |         5 | BPM       |
+| TEMPERATURE_HI  | Overheating                                                                                                                | proposed | ['VentOS']               |   25   |   200 |        70 | Celsius   |
 
 [[top]](#top)
 
