@@ -30,34 +30,34 @@ LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_
 | SET_PEEP                       | PEEP                                                                                              | draft    | operator  | 5 (0.0-40.0) cmH2O                  |
 | SET_FIO2                       | FiO2                                                                                              | draft    | operator  | 50 (21.0-100.0) percent             |
 | VENTILATION_MODE               |                                                                                                   | draft    | operator  | PSV (['VCV', 'PSV', 'PCV', 'PRVC']) |
-| BATTERY                        | Battery status                                                                                    | draft    | sensor    | nan (0.0-100.0) percent             |
-| MAINS                          | Mains status                                                                                      | draft    | sensor    | nan (0.0-1000.0) Volts              |
-| POWER                          | Combined battery and mains power status                                                           | draft    | derived   | nan (0.0-100.0) percent             |
-| OXYGEN_LINE                    | Oxygen line pressure                                                                              | draft    | sensor    | nan (nan-nan) mBar                  |
-| AIR_LINE                       | Air line pressure                                                                                 | draft    | sensor    | nan (0.0-10000.0) mBar              |
-| TEMPERATURE                    | Internal temperature                                                                              | draft    | sensor    | nan (0.0-1000.0) Celsius            |
-| P                              | Observed circuit pressure                                                                         | draft    | derived   | nan (0.0-200.0) cmH2O               |
-| RR                             |                                                                                                   | draft    | derived   | nan (0.0-60.0) BPM                  |
-| P1                             | P1                                                                                                | draft    | sensor    | nan (0.0-200.0) cmH2O               |
-| P2                             | P2                                                                                                | draft    | sensor    | nan (0.0-200.0) cmH2O               |
-| FI                             | flow recorded by the inspiratory manifold sensor                                                  | draft    | sensor    | nan (0.0-200.0) ml/minute           |
-| FE                             | flow recorded by the expiratory manifold sensor                                                   | draft    | sensor    | nan (0.0-200.0) ml/minute           |
-| FLOW                           | flow recorded by both sensors and smoothed                                                        | draft    | derived   | nan (-200.0-200.0) ml/minute        |
-| FO2                            | fraction of gas that is oxygen at the patient airway                                              | draft    | sensor    | nan (0.0-100.0) percent             |
-| PCO2                           | partial pressure of CO2 measured at the patient airway                                            | draft    | sensor    | nan (0.0-200.0) mmHg                |
-| INSPIRING                      | flag to indicate phase of respiratory cycle                                                       | draft    | derived   | nan (nan-nan) Boolean               |
-| PI                             | Pi with some smoothing applied                                                                    | draft    | derived   | nan (0.0-200.0) cmH2O               |
-| PEAK_PI                        | Pi                                                                                                | draft    | derived   | nan (0.0-200.0) cmH2O               |
-| PEEP                           | PEEP                                                                                              | draft    | derived   | nan (0.0-200.0) cmH2O               |
-| TVI                            | TVi                                                                                               | draft    | derived   | nan (0.0-6000.0) ml                 |
-| TVE                            | TVe                                                                                               | draft    | derived   | nan (0.0-6000.0) ml                 |
-| MV                             | Minute volume (the product of respiratory rate and tidal volume)                                  | draft    | derived   | nan (0.0-60000.0) ml                |
-| FIO2                           | FiO2                                                                                              | draft    | derived   | nan (0.0-100.0) percent             |
-| FEO2                           | FeO2                                                                                              | draft    | derived   | nan (0.0-100.0) percent             |
-| ETCO2                          | EtCO2                                                                                             | draft    | derived   | nan (0.0-100.0) mmHg                |
-| ICO2                           | inspired CO2 partial pressure                                                                     | draft    | derived   | nan (0.0-100.0) mmHg                |
-| LAST_LOG_TIME                  | last time the system wrote to the log                                                             | draft    | timestamp | nan (nan-nan) time                  |
-| ALARM_SUSPENDED_TIME           | Alarm suspended time                                                                              | draft    | timestamp | nan (nan-nan) time                  |
+| BATTERY                        | Battery status                                                                                    | draft    | sensor    | (0.0-100.0) percent                 |
+| MAINS                          | Mains status                                                                                      | draft    | sensor    | (0.0-1000.0) Volts                  |
+| POWER                          | Combined battery and mains power status                                                           | draft    | derived   | (0.0-100.0) percent                 |
+| OXYGEN_LINE                    | Oxygen line pressure                                                                              | draft    | sensor    | (nan-nan) mBar                      |
+| AIR_LINE                       | Air line pressure                                                                                 | draft    | sensor    | (0.0-10000.0) mBar                  |
+| TEMPERATURE                    | Internal temperature                                                                              | draft    | sensor    | (0.0-1000.0) Celsius                |
+| P                              | Observed circuit pressure                                                                         | draft    | derived   | (0.0-200.0) cmH2O                   |
+| RR                             |                                                                                                   | draft    | derived   | (0.0-60.0) BPM                      |
+| P1                             | P1                                                                                                | draft    | sensor    | (0.0-200.0) cmH2O                   |
+| P2                             | P2                                                                                                | draft    | sensor    | (0.0-200.0) cmH2O                   |
+| FI                             | flow recorded by the inspiratory manifold sensor                                                  | draft    | sensor    | (0.0-200.0) ml/minute               |
+| FE                             | flow recorded by the expiratory manifold sensor                                                   | draft    | sensor    | (0.0-200.0) ml/minute               |
+| FLOW                           | flow recorded by both sensors and smoothed                                                        | draft    | derived   | (-200.0-200.0) ml/minute            |
+| FO2                            | fraction of gas that is oxygen at the patient airway                                              | draft    | sensor    | (0.0-100.0) percent                 |
+| PCO2                           | partial pressure of CO2 measured at the patient airway                                            | draft    | sensor    | (0.0-200.0) mmHg                    |
+| INSPIRING                      | flag to indicate phase of respiratory cycle                                                       | draft    | derived   | (nan-nan) Boolean                   |
+| PI                             | Pi with some smoothing applied                                                                    | draft    | derived   | (0.0-200.0) cmH2O                   |
+| PEAK_PI                        | Pi                                                                                                | draft    | derived   | (0.0-200.0) cmH2O                   |
+| PEEP                           | PEEP                                                                                              | draft    | derived   | (0.0-200.0) cmH2O                   |
+| TVI                            | TVi                                                                                               | draft    | derived   | (0.0-6000.0) ml                     |
+| TVE                            | TVe                                                                                               | draft    | derived   | (0.0-6000.0) ml                     |
+| MV                             | Minute volume (the product of respiratory rate and tidal volume)                                  | draft    | derived   | (0.0-60000.0) ml                    |
+| FIO2                           | FiO2                                                                                              | draft    | derived   | (0.0-100.0) percent                 |
+| FEO2                           | FeO2                                                                                              | draft    | derived   | (0.0-100.0) percent                 |
+| ETCO2                          | EtCO2                                                                                             | draft    | derived   | (0.0-100.0) mmHg                    |
+| ICO2                           | inspired CO2 partial pressure                                                                     | draft    | derived   | (0.0-100.0) mmHg                    |
+| LAST_LOG_TIME                  | last time the system wrote to the log                                                             | draft    | timestamp | (nan-nan) time                      |
+| ALARM_SUSPENDED_TIME           | Alarm suspended time                                                                              | draft    | timestamp | (nan-nan) time                      |
 
 [[top]](#top)
 
