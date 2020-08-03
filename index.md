@@ -16,8 +16,8 @@ LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_
 | LOG_INTERVAL                   | Desired logging interval                                                                          | draft    | config    | 300000 (1.0-3600000.0) miliseconds  |
 | MAX_LOG_SIZE                   | Maximum log size                                                                                  | draft    | config    | 10000 (0.0-4294967295.0) kilobytes  |
 | ALARM_SUSPEND_DURATION         | Time that alarms are suspended for by user pressing the "Alarm silence" button.                   | draft    | config    | 60 (10.0-120.0) seconds             |
-| PATIENT_WEIGHT                 | Patient weight                                                                                    | draft    | operator  | None (1.0-500.0) kg                 |
-| PATIENT_HEIGHT                 | Patient height                                                                                    | draft    | operator  | None (15.0-250.0) cm                |
+| PATIENT_WEIGHT                 | Patient weight                                                                                    | draft    | operator  | (1.0-500.0) kg                      |
+| PATIENT_HEIGHT                 | Patient height                                                                                    | draft    | operator  | (15.0-250.0) cm                     |
 | PATIENT_GENDER                 | Patient gender                                                                                    | draft    | operator  | I (['M', 'F', 'I'])                 |
 | IDEAL_BODY_WEIGHT              | Ideal body weight                                                                                 | draft    | derived   | 70 (1.0-250.0) kg                   |
 | TV                             | tidal volume [VCV, PRVC]                                                                          | draft    | operator  | 400 (250.0-2000.0) ml               |
