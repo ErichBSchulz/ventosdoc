@@ -13,16 +13,16 @@ In the future this script will contain various transformation scripts.
 LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_HEIGHT | PATIENT_GENDER | IDEAL_BODY_WEIGHT | TV | SET_PI | INSPIRATION_FLOW_TRIGGER | INSPIRATION_P_TRIGGER | EXPIRATORY_TERMINATION_TRIGGER | INSPIRATORY_TIME | MIN_RR | SET_PEEP | SET_FIO2 | VENTILATION_MODE | BATTERY | MAINS | POWER | OXYGEN_LINE | AIR_LINE | TEMPERATURE | P | RR | P1 | P2 | FI | FE | FLOW | FO2 | PCO2 | INSPIRING | PI | PEAK_PI | PEEP | TVI | TVE | MV | FIO2 | FEO2 | ETCO2 | ICO2 | LAST_LOG_TIME | ALARM_SUSPENDED_TIME
 |                                | notes                                                                                             | status   | sot       | values                              |
 |:-------------------------------|:--------------------------------------------------------------------------------------------------|:---------|:----------|:------------------------------------|
-| LOG_INTERVAL                   | Desired logging interval                                                                          | draft    | config    | 300000 (1.0-3600000.0) miliseconds  |
+| LOG_INTERVAL                   | Desired interval between writes to system log                                                     | draft    | config    | 300000 (1.0-3600000.0) miliseconds  |
 | MAX_LOG_SIZE                   | Maximum log size                                                                                  | draft    | config    | 10000 (0.0-4294967295.0) kilobytes  |
 | ALARM_SUSPEND_DURATION         | Time that alarms are suspended for by user pressing the "Alarm silence" button.                   | draft    | config    | 60 (10.0-120.0) seconds             |
 | PATIENT_WEIGHT                 | Patient weight                                                                                    | draft    | operator  | (1.0-500.0) kg                      |
-| PATIENT_HEIGHT                 | Patient height                                                                                    | draft    | operator  | (15.0-250.0) cm                     |
-| PATIENT_GENDER                 | Patient gender                                                                                    | draft    | operator  | I (['M', 'F', 'I'])                 |
+| PATIENT_HEIGHT                 | Patient height, required for calculating ideal body weight                                        | draft    | operator  | (15.0-250.0) cm                     |
+| PATIENT_GENDER                 | Patient gender, required for calculating ideal body weight                                        | draft    | operator  | I (['M', 'F', 'I'])                 |
 | IDEAL_BODY_WEIGHT              | Ideal body weight                                                                                 | draft    | derived   | 70 (1.0-250.0) kg                   |
-| TV                             | tidal volume [VCV, PRVC]                                                                          | draft    | operator  | 400 (250.0-2000.0) ml               |
-| SET_PI                         | Pi,  [PSV, PCV]                                                                                   | draft    | operator  | 20 (-10.0-40.0) cmH2O               |
-| INSPIRATION_FLOW_TRIGGER       | inspiration trigger [PSV]                                                                         | draft    | operator  | 2 (nan-nan) ml/minute               |
+| TV                             | Desired tidal volume [VCV, PRVC]                                                                  | draft    | operator  | 400 (250.0-2000.0) ml               |
+| SET_PI                         | Desired inspiratory pressure (Pi),  [PSV, PCV]                                                    | draft    | operator  | 20 (-10.0-40.0) cmH2O               |
+| INSPIRATION_FLOW_TRIGGER       | inspiration trigger [PSV]                                                                         | draft    | operator  | 2 (0.0-10.0) ml/minute              |
 | INSPIRATION_P_TRIGGER          | inspiration trigger [PSV]                                                                         | draft    | operator  | 0.5 (0.1-10.0) cmH2O                |
 | EXPIRATORY_TERMINATION_TRIGGER | expiratory termination trigger (percent of peak inspiratory flow) (PSV)                           | draft    | operator  | 25 (0.0-99.0) percent               |
 | INSPIRATORY_TIME               | inspiratory time (which together with respiratory rate imply IE)                                  | draft    | operator  | 2000 (100.0-30000.0) miliseconds    |
@@ -31,23 +31,23 @@ LOG_INTERVAL | MAX_LOG_SIZE | ALARM_SUSPEND_DURATION | PATIENT_WEIGHT | PATIENT_
 | SET_FIO2                       | FiO2                                                                                              | draft    | operator  | 50 (21.0-100.0) percent             |
 | VENTILATION_MODE               |                                                                                                   | draft    | operator  | PSV (['VCV', 'PSV', 'PCV', 'PRVC']) |
 | BATTERY                        | Battery status                                                                                    | draft    | sensor    | (0.0-100.0) percent                 |
-| MAINS                          | Mains status                                                                                      | draft    | sensor    | (0.0-1000.0) Volts                  |
+| MAINS                          | Mains electricity power supply status                                                             | draft    | sensor    | (0.0-1000.0) Volts                  |
 | POWER                          | Combined battery and mains power status                                                           | draft    | derived   | (0.0-100.0) percent                 |
-| OXYGEN_LINE                    | Oxygen line pressure                                                                              | draft    | sensor    | (nan-nan) mBar                      |
-| AIR_LINE                       | Air line pressure                                                                                 | draft    | sensor    | (0.0-10000.0) mBar                  |
-| TEMPERATURE                    | Internal temperature                                                                              | draft    | sensor    | (0.0-1000.0) Celsius                |
-| P                              | Observed circuit pressure                                                                         | draft    | derived   | (0.0-200.0) cmH2O                   |
-| RR                             |                                                                                                   | draft    | derived   | (0.0-60.0) BPM                      |
-| P1                             | P1                                                                                                | draft    | sensor    | (0.0-200.0) cmH2O                   |
-| P2                             | P2                                                                                                | draft    | sensor    | (0.0-200.0) cmH2O                   |
-| FI                             | flow recorded by the inspiratory manifold sensor                                                  | draft    | sensor    | (0.0-200.0) ml/minute               |
-| FE                             | flow recorded by the expiratory manifold sensor                                                   | draft    | sensor    | (0.0-200.0) ml/minute               |
-| FLOW                           | flow recorded by both sensors and smoothed                                                        | draft    | derived   | (-200.0-200.0) ml/minute            |
-| FO2                            | fraction of gas that is oxygen at the patient airway                                              | draft    | sensor    | (0.0-100.0) percent                 |
-| PCO2                           | partial pressure of CO2 measured at the patient airway                                            | draft    | sensor    | (0.0-200.0) mmHg                    |
+| OXYGEN_LINE                    | Oxygen supply line pressure                                                                       | draft    | sensor    | (0.0-10000.0) mBar                  |
+| AIR_LINE                       | Air supply line pressure                                                                          | draft    | sensor    | (0.0-10000.0) mBar                  |
+| TEMPERATURE                    | Internal ventilator temperature                                                                   | draft    | sensor    | (0.0-1000.0) Celsius                |
+| P                              | Observed circuit pressure                                                                         | draft    | derived   | (-10.0-200.0) cmH2O                 |
+| RR                             | Observed respiratory rate                                                                         | draft    | derived   | (0.0-60.0) BPM                      |
+| P1                             | Primary pressure sensor value                                                                     | draft    | sensor    | (-10.0-200.0) cmH2O                 |
+| P2                             | Secondary pressure sensor value                                                                   | draft    | sensor    | (-10.0-200.0) cmH2O                 |
+| FI                             | Gas flow recorded by the inspiratory manifold sensor                                              | draft    | sensor    | (0.0-200.0) ml/minute               |
+| FE                             | Gas flow recorded by the expiratory manifold sensor                                               | draft    | sensor    | (0.0-200.0) ml/minute               |
+| FLOW                           | Gas flow recorded by both sensors and smoothed                                                    | draft    | derived   | (-200.0-200.0) ml/minute            |
+| FO2                            | Fraction of gas that is oxygen at the patient airway                                              | draft    | sensor    | (0.0-100.0) percent                 |
+| PCO2                           | Partial pressure of CO2 measured at the patient airway                                            | draft    | sensor    | (0.0-200.0) mmHg                    |
 | INSPIRING                      | flag to indicate phase of respiratory cycle                                                       | draft    | derived   | Boolean                             |
 | PI                             | Pi with some smoothing applied                                                                    | draft    | derived   | (0.0-200.0) cmH2O                   |
-| PEAK_PI                        | Pi                                                                                                | draft    | derived   | (0.0-200.0) cmH2O                   |
+| PEAK_PI                        | Peak observed pressure                                                                            | draft    | derived   | (0.0-200.0) cmH2O                   |
 | PEEP                           | PEEP                                                                                              | draft    | derived   | (0.0-200.0) cmH2O                   |
 | TVI                            | TVi                                                                                               | draft    | derived   | (0.0-6000.0) ml                     |
 | TVE                            | TVe                                                                                               | draft    | derived   | (0.0-6000.0) ml                     |
